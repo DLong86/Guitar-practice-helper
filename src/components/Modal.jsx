@@ -4,7 +4,7 @@ import Button from "./Button";
 const Modal = ({ handleModal }) => {
 	return (
 		<div className="fixed inset-0 bg-black flex flex-col text-center justify-center backdrop-blur-sm bg-opacity-25">
-			<div className="w-1/2 h-2/3 border-2 border-white mx-auto bg-gray-800 rounded-2xl flex flex-col items-center justify-evenly">
+			<div className="w-2/3 h-1/2 border-2 border-white mx-auto bg-[#2C2C2C] rounded-2xl flex flex-col items-center justify-evenly">
 				<h1 className="">Options</h1>
 				<p>
 					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit,

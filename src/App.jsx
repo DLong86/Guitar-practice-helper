@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Modal from "./components/Modal";
-import Button from "./components/Button";
+import Navbar from "./components/Navbar";
+import About from "./pages/About";
+import Home from "./pages/Home";
 
 function App() {
 	const [showModal, setShowModal] = useState(false);
@@ -10,17 +13,14 @@ function App() {
 	};
 	return (
 		<div className="duration-200">
-			<div className="flex items-center justify-around w-screen py-4">
-				<h1 className="text-2xl font-bold">Guitar Practice Helper</h1>
-				{/* Could set a time and things to do within that time */}
-				<button
-					className="rounded-md bg-gray-500 px-4 py-1 hover:bg-gray-600 duration-200"
-					onClick={handleModal}
-				>
-					Options
-				</button>
-			</div>
-			{showModal && <Modal handleModal={handleModal} />}
+			<BrowserRouter>
+				<Navbar handleModal={handleModal} />
+				{showModal && <Modal handleModal={handleModal} />}
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/about" element={<About />} />
+				</Routes>
+			</BrowserRouter>
 		</div>
 	);
 }
