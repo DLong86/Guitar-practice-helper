@@ -4,6 +4,7 @@ import Modal from "./components/Modal";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Home from "./pages/Home";
+import PracticePage from "./pages/PracticePage";
 
 function App() {
 	const [showModal, setShowModal] = useState(false);
@@ -19,6 +20,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/about" element={<About />} />
+					<Route path="/practice-page" element={<PracticePage />} />
 				</Routes>
 			</BrowserRouter>
 		</div>

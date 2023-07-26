@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import About from "../pages/About";
 
 const Navbar = ({ handleModal }) => {
 	const [nav, setNav] = useState(true);
@@ -22,6 +21,15 @@ const Navbar = ({ handleModal }) => {
 					<li>
 						<Link className="hover:text-[#787878] duration-200" to="/">
 							Home
+						</Link>
+					</li>
+
+					<li>
+						<Link
+							className="hover:text-[#787878] duration-200"
+							to="/practice-page"
+						>
+							My Practice
 						</Link>
 					</li>
 					<li>
@@ -51,6 +59,12 @@ const Navbar = ({ handleModal }) => {
 					<li className="p-4 cursor-pointer hover:text-purple-400 duration-200">
 						<Link to="/" onClick={handleNav}>
 							Home
+						</Link>
+					</li>
+
+					<li className="p-4 cursor-pointer hover:text-purple-400 duration-200">
+						<Link to="/practice-page" onClick={handleNav}>
+							my practice
 						</Link>
 					</li>
 					<li className="p-4 cursor-pointer hover:text-purple-400 duration-200">

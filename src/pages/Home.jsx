@@ -2,7 +2,7 @@ import React from "react";
 
 const Home = () => {
 	return (
-		<div className="flex flex-col gap-10 w-[90%] mx-auto mt-10">
+		<div className="flex flex-col gap-10 w-[90%] md:w-[80%] mx-auto mt-10 md:mt-20 mb-20">
 			<h1 className="text-6xl font-thin text-[#787878] mb-2 underline tracking-wide">
 				Home
 			</h1>
