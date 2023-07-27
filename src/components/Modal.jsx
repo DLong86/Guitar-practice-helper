@@ -5,9 +5,10 @@ import { Link } from "react-router-dom";
 
 const Modal = ({ handleModal }) => {
 	const [nextOptions, setNextOptions] = useState(false);
-
 	const [hours, setHours] = useState(0);
 	const [minutes, setMinutes] = useState(0);
+	// **** Need to lift this state and function to the app component so I can use the state in the practice page component ********
+	const [checkedItems, setCheckedItems] = useState([]);
 
 	const handleNext = () => {
 		setNextOptions(!nextOptions);
@@ -21,7 +22,20 @@ const Modal = ({ handleModal }) => {
 		setMinutes(e.target.value);
 	};
 
-	console.log(hours, minutes);
+	const handleCheckbox = (e, itemName) => {
+		const isChecked = e.target.checked;
+		console.log(isChecked);
+		if (isChecked) {
+			// If the checbox is checked, then add the cheeky little rascals to the state
+			setCheckedItems((prevItems) => [...prevItems, itemName]);
+		} else {
+			setCheckedItems((prevItems) =>
+				prevItems.filter((item) => item !== itemName)
+			);
+		}
+	};
+
+	console.log(checkedItems);
 
 	return (
 		<div className="fixed inset-0 bg-black flex flex-col text-center justify-center backdrop-blur-sm bg-opacity-25">
@@ -77,6 +91,8 @@ const Modal = ({ handleModal }) => {
 										name={option.name}
 										value={option.name}
 										id={index}
+										onChange={(e) => handleCheckbox(e, option.name)}
+										checked={checkedItems.includes(option.name)}
 									/>
 									<label htmlFor={index}>{option.name}</label>
 								</li>
