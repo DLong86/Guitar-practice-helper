@@ -8,32 +8,11 @@ const PracticePage = ({ checkedItems }) => {
 				My Practice Page
 			</h1>
 			<div className="w-full h-screen sm:h-[600px] grid grid-cols-1 sm:grid-cols-3 sm:grid-rows-3 gap-8 ">
-				<div className=" bg-[#1E1E1E] rounded-lg p-6">
-					<p className="text-2xl">This is the practice page</p>
-				</div>
-				<div className="bg-[#1E1E1E] rounded-lg p-6">
-					<p className="text-2xl">
-						All options selected from modal will go here
-					</p>
-				</div>
-				<div className="bg-[#1E1E1E] rounded-lg p-6">
-					<p className="text-2xl">
-						Maybe they will be cards that once clicked will show each practice
-						task ie: scales card - will show types of scales to do etc...
-					</p>
-				</div>
-				<div className="bg-[#1E1E1E] rounded-lg p-6">
-					<p className="text-2xl">
-						Maybe they will be cards that once clicked will show each practice
-						task ie: scales card - will show types of scales to do etc...
-					</p>
-				</div>
-				<div className=" bg-[#1E1E1E] rounded-lg p-6">
-					<p className="text-2xl">
-						Maybe they will be cards that once clicked will show each practice
-						task ie: scales card - will show types of scales to do etc...
-					</p>
-				</div>
+				{checkedItems.map((items) => (
+					<div className=" bg-[#1E1E1E] rounded-lg p-6">
+						<p className="text-2xl">{items}</p>
+					</div>
+				))}
 			</div>
 		</div>
 	);
