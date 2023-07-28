@@ -3,12 +3,10 @@ import Button from "./Button";
 import { practiceOptions } from "../utils/practiceOptions";
 import { Link } from "react-router-dom";
 
-const Modal = ({ handleModal }) => {
+const Modal = ({ handleModal, checkedItems, handleCheckbox }) => {
 	const [nextOptions, setNextOptions] = useState(false);
 	const [hours, setHours] = useState(0);
 	const [minutes, setMinutes] = useState(0);
-	// **** Need to lift this state and function to the app component so I can use the state in the practice page component ********
-	const [checkedItems, setCheckedItems] = useState([]);
 
 	const handleNext = () => {
 		setNextOptions(!nextOptions);
@@ -21,21 +19,6 @@ const Modal = ({ handleModal }) => {
 	const handleMinutes = (e) => {
 		setMinutes(e.target.value);
 	};
-
-	const handleCheckbox = (e, itemName) => {
-		const isChecked = e.target.checked;
-		console.log(isChecked);
-		if (isChecked) {
-			// If the checbox is checked, then add the cheeky little rascals to the state
-			setCheckedItems((prevItems) => [...prevItems, itemName]);
-		} else {
-			setCheckedItems((prevItems) =>
-				prevItems.filter((item) => item !== itemName)
-			);
-		}
-	};
-
-	console.log(checkedItems);
 
 	return (
 		<div className="fixed inset-0 bg-black flex flex-col text-center justify-center backdrop-blur-sm bg-opacity-25">
@@ -83,20 +66,21 @@ const Modal = ({ handleModal }) => {
 						</h1>
 
 						<ul className="grid grid-cols-3 items-start text-2xl">
-							{practiceOptions.map((option, index) => (
-								<li className="flex gap-4 font-thin" key={index}>
-									<input
-										type="checkbox"
-										className="p-4 w-5 accent-pink-400"
-										name={option.name}
-										value={option.name}
-										id={index}
-										onChange={(e) => handleCheckbox(e, option.name)}
-										checked={checkedItems.includes(option.name)}
-									/>
-									<label htmlFor={index}>{option.name}</label>
-								</li>
-							))}
+							{checkedItems &&
+								practiceOptions.map((option, index) => (
+									<li className="flex gap-4 font-thin" key={index}>
+										<input
+											type="checkbox"
+											className="p-4 w-5 accent-pink-400"
+											name={option.name}
+											value={option.name}
+											id={index}
+											onChange={(e) => handleCheckbox(e, option.name)}
+											checked={checkedItems.includes(option.name)}
+										/>
+										<label htmlFor={index}>{option.name}</label>
+									</li>
+								))}
 						</ul>
 						<div className="flex items-center justify-around w-3/4 mx-auto">
 							<Button text="back" onClick={handleNext} />
